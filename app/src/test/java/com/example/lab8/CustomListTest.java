@@ -2,6 +2,8 @@ package com.example.lab8;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
@@ -46,4 +48,21 @@ public class CustomListTest {
         assertTrue(list.hasCity(city));
     }
 
+    @Test
+    void deleteCityTest() {
+        list = MockCityList();
+        // add the city to cityList first
+        City city = new City("Edmonton", "Alberta");
+        list.addCity(city);
+
+        // deletes object from list and check if it's deleted
+        list.deleteCity(city);
+        assertFalse(list.hasCity(city));
+
+        // the object city is successfully deleted from list if this
+        // point is reached, we can reuse it to test delete function's
+        // exception functionality
+        assertThrows(IllegalArgumentException.class, ()->
+                list.deleteCity(city));
+    }
 }
