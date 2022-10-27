@@ -36,7 +36,7 @@ public class CustomListTest {
     }
 
     @Test
-    void testHasCity() {
+    void hasCityTest() {
         list = MockCityList();
         // add the city to cityList first
         City city = new City("Edmonton", "Alberta");
